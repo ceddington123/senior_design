@@ -19,7 +19,7 @@ for line in fileinput.input():
     lines.append(line)
 
 for line in lines:
-    amp.append(int(line))
+    amp.append(abs(int(line)))
     index.append(sample)    
     sample += (44100.0/(num_samples*2))
     if sample > 4000:
