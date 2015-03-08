@@ -1,0 +1,26 @@
+#!/usr/bin/python
+
+import fileinput
+import plotly.plotly as py
+from plotly.graph_objs import *
+
+# Fill in with your personal username and API key
+# or, use this public demo account
+py.sign_in('Python-Demo-Account', 'gwt101uhh0')
+
+sample = 0
+amp = []
+index = []
+
+for line in fileinput.input():
+    sample += 1
+    amp.append(int(line))
+    index.append(sample * (44100.0/4096.0))
+
+trace1 = Scatter(
+    x=index,
+    y=amp
+)
+
+data = Data([trace1])
+plot_url = py.plot(data, filename='freq')
